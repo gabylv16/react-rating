@@ -7,9 +7,7 @@ import { Dictionary } from "lodash";
 import * as React from "react";
 
 declare class Rating extends React.Component<RatingComponentProps> {}
-declare namespace Rating {
-
-}
+declare namespace Rating {}
 
 export interface RatingComponentProps {
   /**
@@ -85,6 +83,13 @@ export interface RatingComponentProps {
    * Default value: false
    */
   quiet?: boolean;
+
+  /**
+   * Whether to how tooltip or not.
+   *
+   * Default value: false
+   */
+  showTooltip?: boolean;
 
   /**
    * The direction of the rating element contents

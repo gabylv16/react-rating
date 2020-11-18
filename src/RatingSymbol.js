@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Tooltip from 'rc-tooltip';
 
 // Return the corresponding React node for an icon.
 const _iconNode = (icon) => {
@@ -28,15 +29,17 @@ class RatingSymbol extends React.PureComponent {
       readonly,
       onClick,
       onMouseMove,
-      onTouchEnd
+      onTouchEnd,
+      showTooltip,
+      value
     } = this.props;
     const backgroundNode = _iconNode(inactiveIcon);
     const showbgIcon = percent < 100;
     const bgIconContainerStyle = showbgIcon
       ? {}
       : {
-          visibility: 'hidden'
-        };
+        visibility: 'hidden'
+      };
     const iconNode = _iconNode(activeIcon);
     const iconContainerStyle = {
       display: 'inline-block',
@@ -74,20 +77,27 @@ class RatingSymbol extends React.PureComponent {
     }
 
     return (
-      <span
-        style={style}
-        onClick={handleMouseClick}
-        onMouseMove={handleMouseMove}
-        onTouchMove={handleMouseMove}
-        onTouchEnd={handleTouchEnd}
-      >
-        <span style={bgIconContainerStyle}>
-          {backgroundNode}
+      <Tooltip
+        overlay={value}
+        visible={showTooltip}
+        prefixCls="rc-slider-tooltip"
+        placement="top">
+        <span
+          style={style}
+          onClick={handleMouseClick}
+          onMouseMove={handleMouseMove}
+          onTouchMove={handleMouseMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <span style={bgIconContainerStyle}>
+            {backgroundNode}
+          </span>
+          <span style={iconContainerStyle}>
+            {iconNode}
+          </span>
         </span>
-        <span style={iconContainerStyle}>
-          {iconNode}
-        </span>
-      </span>
+      </Tooltip>
+
     );
   }
 }

@@ -62,6 +62,7 @@ class RatingAPILayer extends React.PureComponent {
       placeholderSymbol,
       readonly,
       quiet,
+      showTooltip,
       fractions,
       direction,
       start,
@@ -88,6 +89,7 @@ class RatingAPILayer extends React.PureComponent {
         placeholderValue={this.tranlateValueToDisplayValue(this.props.placeholderRating)}
         readonly={readonly}
         quiet={quiet}
+        showTooltip={showTooltip}
         fractions={fractions}
         direction={direction}
         emptySymbol={emptySymbol}
@@ -106,6 +108,7 @@ RatingAPILayer.defaultProps = {
   step: 1,
   readonly: false,
   quiet: false,
+  showTooltip: false,
   fractions: 1,
   direction: 'ltr',
   onHover: noop,

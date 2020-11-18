@@ -1,5 +1,5 @@
 import babel from 'rollup-plugin-babel';
-import {terser} from 'rollup-plugin-terser';
+import { terser } from 'rollup-plugin-terser';
 import pkg from './package.json';
 
 const umd = pkg.main.replace(/\.cjs\.js$/, '.umd.js');
@@ -13,7 +13,8 @@ export default [
       format: 'umd',
       name: 'ReactRating',
       globals: {
-        react: 'React'
+        react: 'React',
+        'rc-tooltip': 'Tooltip'
       },
       sourcemap: true
     },
@@ -23,7 +24,8 @@ export default [
       }),
     ],
     external: [
-      'react'
+      'react',
+      'rc-tooltip'
     ]
   },
   // Minified UMD build
@@ -34,7 +36,8 @@ export default [
       format: 'umd',
       name: 'ReactRating',
       globals: {
-        react: 'React'
+        react: 'React',
+        'rc-tooltip': 'Tooltip'
       },
       sourcemap: true
     },
@@ -45,7 +48,8 @@ export default [
       terser()
     ],
     external: [
-      'react'
+      'react',
+      'rc-tooltip'
     ]
   },
   // CommonJS (for Node) and ES module (for bundlers) build.
@@ -67,7 +71,8 @@ export default [
       })
     ],
     external: [
-      'react'
+      'react',
+      'rc-tooltip'
     ]
   }
 ];

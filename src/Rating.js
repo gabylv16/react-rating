@@ -117,6 +117,7 @@ class Rating extends React.PureComponent {
     const {
       readonly,
       quiet,
+      showTooltip,
       totalSymbols,
       value,
       placeholderValue,
@@ -161,6 +162,8 @@ class Rating extends React.PureComponent {
         percent = 0;
       }
 
+      const renderTooltip = showTooltip && interacting && (i + 1) === Math.ceil(renderedValue);
+
       symbolNodes.push(
         <Symbol
           key={i}
@@ -172,6 +175,8 @@ class Rating extends React.PureComponent {
           }
           percent={percent}
           direction={direction}
+          showTooltip={renderTooltip}
+          value={renderedValue}
           {...(!readonly && {
             onClick: this.symbolClick,
             onMouseMove: this.symbolMouseMove,
@@ -185,7 +190,7 @@ class Rating extends React.PureComponent {
     return (
       <span
         id={id}
-        style={{...style, display: 'inline-block', direction }}
+        style={{ ...style, display: 'inline-block', direction }}
         className={className}
         tabIndex={tabIndex}
         aria-label={this.props['aria-label']}
